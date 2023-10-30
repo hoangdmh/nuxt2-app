@@ -20,7 +20,25 @@
 
 <script>
 export default {
-    layout: 'admin'
+    layout(context) {
+        // console.log('context => ', Object.keys(context.req));
+        console.log('context => ', context.req.headers['user-agent']);
+
+        var userAgent = '';
+        if(context.req){
+            userAgent = context.req.headers['user-agent'];// kiểm tra thiết bị là mobile hay desktop
+        }else {
+            userAgent = navigator.userAgent;
+        }
+
+        if(/mobile/i.test(userAgent)){
+            return 'mobile'
+        }
+        
+        return 'admin'
+        
+        console.log('userAgent', userAgent);
+    }
 }
 </script>
 
