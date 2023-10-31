@@ -4,6 +4,9 @@
 
 <script>
 export default {
+    head: {
+        title: 'Client page',
+    },
     mounted () {
         this.$notify({
             group: 'foo',
